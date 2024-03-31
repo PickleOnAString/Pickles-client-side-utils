@@ -1,19 +1,18 @@
 {
 	"schemaVersion": 1,
 	"id": "picklesclientsideutils",
-	"version": "${version}",
-	"name": "PicklesClientSideUtils",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"version": "0.0.1",
+	"name": "Pickle's Client-side utils",
+	"description": "Collection of useful configurable tweaks! Fully client side!",
 	"authors": [
-		"Me!"
+		"Pickle"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/PickleOnAString/Pickles-client-side-utils"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/picklesclientsideutils/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
 		"client": [
 			"net.picklestring.PicklesClientSideUtilsClient"
@@ -23,7 +22,6 @@
 		]
 	},
 	"mixins": [
-		"picklesclientsideutils.mixins.json",
 		{
 			"config": "picklesclientsideutils.client.mixins.json",
 			"environment": "client"
