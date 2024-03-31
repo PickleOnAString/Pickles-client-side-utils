@@ -1,0 +1,9 @@
+{
+  "key.picklesclientsideutils.copy_glyph": "Copy Glyph To clipboard",
+  "text.autoconfig.picklesclientsideutils.option.apiKey": "Server Api Key",
+  "text.autoconfig.picklesclientsideutils.option.glyphCopy": "Enable Glyph Copy",
+  "text.autoconfig.picklesclientsideutils.option.syncingServerAddress": "Syncing server address",
+  "text.autoconfig.picklesclientsideutils.option.syncingServerPort": "Syncing server port",
+  "text.autoconfig.picklesclientsideutils.option.syncResourcePackFromServer": "Sync resource pack from server",
+  "text.autoconfig.picklesclientsideutils.option.downloadNewUpdatesFromServer": "Download new updates from server"
+}

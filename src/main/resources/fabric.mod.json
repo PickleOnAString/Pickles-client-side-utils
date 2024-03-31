@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "picklesclientsideutils",
+	"version": "${version}",
+	"name": "PicklesClientSideUtils",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/picklesclientsideutils/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"net.picklestring.PicklesClientSideUtilsClient"
+		],
+		"modmenu": [
+			"net.picklestring.ModMenu"
+		]
+	},
+	"mixins": [
+		"picklesclientsideutils.mixins.json",
+		{
+			"config": "picklesclientsideutils.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*",
+		"fabric-key-binding-api-v1": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
