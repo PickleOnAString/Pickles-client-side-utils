@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "picklesclientsideutils",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"name": "Pickle's Client-side utils",
 	"description": "Collection of useful configurable tweaks! Fully client side!",
 	"authors": [

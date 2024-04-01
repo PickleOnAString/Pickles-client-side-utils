@@ -25,6 +25,23 @@ public class Commands {
         return 1;
     }
 
+    public static int createModel(CommandContext<FabricClientCommandSource> context) {
+        if (HttpServer.Ping()) {
+            String url = StringArgumentType.getString(context, "url");
+            String fileName = StringArgumentType.getString(context, "fileName");
+            try {
+                HttpServer.createModel(url, fileName);
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            context.getSource().sendFeedback(Text.literal("Uploaded!"));
+        }
+        else {
+            context.getSource().sendFeedback(Text.literal("Server offline!"));
+        }
+        return 1;
+    }
+
     public static int createProp(CommandContext<FabricClientCommandSource> context) {
         if (HttpServer.Ping()) {
             String item = StringArgumentType.getString(context, "item");
@@ -34,6 +51,27 @@ public class Commands {
 
             try {
                 HttpServer.createPropFile(item, displayName, texture, fileName);
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            context.getSource().sendFeedback(Text.literal("Uploaded!"));
+        }
+        else {
+            context.getSource().sendFeedback(Text.literal("Server offline!"));
+        }
+
+        return 1;
+    }
+
+    public static int createPropWithModel(CommandContext<FabricClientCommandSource> context) {
+        if (HttpServer.Ping()) {
+            String item = StringArgumentType.getString(context, "item");
+            String displayName = StringArgumentType.getString(context, "displayName");
+            String model = StringArgumentType.getString(context, "model");
+            String fileName = StringArgumentType.getString(context, "fileName");
+
+            try {
+                HttpServer.createPropFileWithModel(item, displayName, model, fileName);
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }

@@ -60,7 +60,6 @@ public class PicklesClientSideUtilsClient implements ClientModInitializer {
 		}
 
 		ClientTickEvents.END_CLIENT_TICK.register(GlyphCopy::GlyphCopyCheck);
-		ServerLifecycleEvents.SERVER_STARTED.register(new ServerStartedInject());
 
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
 				dispatcher.register(ClientCommandManager.literal("upload_texture")
@@ -68,12 +67,24 @@ public class PicklesClientSideUtilsClient implements ClientModInitializer {
 							.then(argument("fileName", StringArgumentType.string())
 								.executes(Commands::createTexture)))));
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+				dispatcher.register(ClientCommandManager.literal("upload_model")
+						.then(argument("url", StringArgumentType.string())
+								.then(argument("fileName", StringArgumentType.string())
+										.executes(Commands::createModel)))));
+		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
 				dispatcher.register(ClientCommandManager.literal("upload_item_override")
 						.then(argument("item", StringArgumentType.string())
 								.then(argument("displayName", StringArgumentType.string())
 										.then(argument("texture", StringArgumentType.string())
 												.then(argument("fileName", StringArgumentType.string())
 													.executes(Commands::createProp)))))));
+		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+				dispatcher.register(ClientCommandManager.literal("upload_item_override_with_model")
+						.then(argument("item", StringArgumentType.string())
+								.then(argument("displayName", StringArgumentType.string())
+										.then(argument("model", StringArgumentType.string())
+												.then(argument("fileName", StringArgumentType.string())
+														.executes(Commands::createPropWithModel)))))));
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
 				dispatcher.register(ClientCommandManager.literal("upload_elytra_override")
 						.then(argument("displayName", StringArgumentType.string())

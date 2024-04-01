@@ -67,11 +67,35 @@ public class HttpServer {
         HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
     }
 
+    public static void createModel(String modelUrl, String fileName) throws IOException, InterruptedException {
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        String requestBody = "url="+modelUrl+"&fileName="+fileName;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url+"create/model"))
+                .header("api_key", config.apiKey)
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+        HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
     public static void createPropFile(String item, String displayName, String texture, String fileName) throws IOException, InterruptedException {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
         String requestBody = "item="+item+"&displayName="+displayName+"&texture="+texture+"&fileName="+fileName;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url+"create/prop"))
+                .header("api_key", config.apiKey)
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+        HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    public static void createPropFileWithModel(String item, String displayName, String model, String fileName) throws IOException, InterruptedException {
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        String requestBody = "item="+item+"&displayName="+displayName+"&model="+model+"&fileName="+fileName;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url+"create/prop_with_model"))
                 .header("api_key", config.apiKey)
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
